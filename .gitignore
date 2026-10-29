@@ -1,3 +1,9 @@
+
+# ==================================================
+# REVENUE & PROFITABILITY INTELLIGENCE
+# Git Ignore Configuration
+# ==================================================
+
 # Python
 __pycache__/
 *.py[cod]
@@ -5,6 +11,11 @@ __pycache__/
 venv/
 .pytest_cache/
 .ipynb_checkpoints/
+
+# Python build artifacts
+build/
+dist/
+*.egg-info/
 
 # Environment variables and secrets
 .env
@@ -18,16 +29,19 @@ venv/
 *.sqlite
 *.sqlite3
 
-# Data files
+# Raw and processed datasets
 data/raw/*
 data/processed/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 
-# dbt
+# dbt artifacts
 target/
 dbt_packages/
 logs/
+
+# Generated investigation datasets
+reports/sales_discrepancies.csv
 
 # IDE and OS
 .vscode/
@@ -38,3 +52,9 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.log
+*.bak
+*.swp
+
+# ==================================================
+# END
+# ==================================================
