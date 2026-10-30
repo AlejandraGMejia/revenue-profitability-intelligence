@@ -1,0 +1,61 @@
+
+version: 2
+
+models:
+  - name: stg_products
+    description: >
+      Product attributes from AdventureWorks.
+      Grain: one record per product.
+    columns:
+      - name: product_key
+        description: Unique product identifier.
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_customers
+    description: >
+      Internet customer attributes.
+      Includes the -1 placeholder member.
+    columns:
+      - name: customer_key
+        description: Unique customer identifier.
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_resellers
+    description: >
+      Reseller account attributes.
+      Includes the -1 placeholder member.
+    columns:
+      - name: reseller_key
+        description: Unique reseller identifier.
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_dates
+    description: >
+      Calendar and fiscal date attributes.
+    columns:
+      - name: date_key
+        description: Unique date identifier.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: full_date
+        description: Actual calendar date.
+        data_tests:
+          - not_null
+
+  - name: stg_territories
+    description: >
+      Sales territory and geographical attributes.
+    columns:
+      - name: territory_key
+        description: Unique territory identifier.
+        data_tests:
+          - unique
+          - not_null

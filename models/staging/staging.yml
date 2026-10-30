@@ -1,0 +1,48 @@
+
+version: 2
+
+models:
+  - name: stg_sales
+    description: >
+      Cleaned sales source columns with standardized
+      names. Preserves the original source grain
+      and financial values.
+
+    columns:
+      - name: sales_order_line_key
+        description: Unique identifier for a sales line.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: revenue
+        description: Recorded sales amount.
+        data_tests:
+          - not_null
+
+      - name: total_product_cost
+        description: Recorded product cost.
+        data_tests:
+          - not_null
+
+  - name: stg_orders
+    description: >
+      Sales order information containing the sales
+      channel and order identifiers.
+
+    columns:
+      - name: sales_order_line_key
+        description: Unique identifier for an order line.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: sales_channel
+        description: Internet or Reseller channel.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - Internet
+                  - Reseller

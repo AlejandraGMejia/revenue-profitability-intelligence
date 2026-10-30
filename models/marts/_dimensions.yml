@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: >
+      Product dimension containing product attributes,
+      prices, categories and subcategories.
+    columns:
+      - name: product_key
+        description: Unique product identifier.
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_customer
+    description: >
+      Customer dimension including the -1
+      placeholder for Reseller transactions.
+    columns:
+      - name: customer_key
+        description: Unique customer identifier.
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_reseller
+    description: >
+      Reseller dimension including the -1
+      placeholder for Internet transactions.
+    columns:
+      - name: reseller_key
+        description: Unique reseller identifier.
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_date
+    description: >
+      Calendar and fiscal reporting dimension.
+    columns:
+      - name: date_key
+        description: Unique date identifier.
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_territory
+    description: >
+      Geographic sales territory dimension.
+    columns:
+      - name: territory_key
+        description: Unique territory identifier.
+        data_tests:
+          - unique
+          - not_null

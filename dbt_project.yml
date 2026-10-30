@@ -1,0 +1,21 @@
+
+# Revenue & Profitability Intelligence
+# dbt project configuration
+
+name: 'revenue_profitability_intelligence'
+version: '1.0.0'
+
+config-version: 2
+
+profile: 'revenue_profitability_intelligence'
+
+model-paths: ['models']
+
+target-path: 'target'
+clean-targets:
+  - 'target'
+  - 'dbt_packages'
+
+models:
+  revenue_profitability_intelligence:
+    +materialized: view

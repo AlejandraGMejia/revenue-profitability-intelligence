@@ -1,0 +1,84 @@
+version: 2
+
+models:
+  - name: fact_sales
+    description: >
+      Financial sales fact model.
+      One row per sales order line.
+      Preserves source revenue and product costs.
+      Gross profit is calculated, not sourced.
+      Includes diagnostic pricing differences.
+
+    columns:
+      - name: sales_order_line_key
+        description: Unique sales order line identifier.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: sales_channel
+        description: Sales channel.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Internet', 'Reseller']
+
+      - name: product_key
+        description: Product dimension relationship.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_product')
+                field: product_key
+
+      - name: customer_key
+        description: >
+          Customer dimension relationship.
+          The -1 member is preserved.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_key
+
+      - name: reseller_key
+        description: >
+          Reseller dimension relationship.
+          The -1 member is preserved.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_reseller')
+                field: reseller_key
+
+      - name: territory_key
+        description: Territory dimension relationship.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_territory')
+                field: territory_key
+
+      - name: order_date_key
+        description: Order date relationship.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+
+      - name: revenue
+        description: Original recorded sales amount.
+        data_tests:
+          - not_null
+
+      - name: total_product_cost
+        description: Original recorded product cost.
+        data_tests:
+          - not_null
+
+      - name: gross_profit
+        description: Revenue minus product cost.
+        data_tests:
+          - not_null

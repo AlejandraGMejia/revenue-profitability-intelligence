@@ -1,0 +1,48 @@
+
+version: 2
+
+sources:
+  - name: raw
+    description: >
+      Original AdventureWorks data loaded into PostgreSQL.
+      Source records are preserved without business
+      transformations.
+
+    database: revenue_intelligence
+    schema: raw
+
+    tables:
+      - name: sales
+        description: >
+          Sales transactions at sales order line grain.
+        columns:
+          - name: SalesOrderLineKey
+            quote: true
+            data_tests:
+              - unique
+              - not_null
+
+      - name: orders
+        description: >
+          Sales order metadata including sales channel.
+        columns:
+          - name: SalesOrderLineKey
+            quote: true
+            data_tests:
+              - unique
+              - not_null
+
+      - name: products
+        description: Product attributes and categories.
+
+      - name: customers
+        description: Internet customer attributes.
+
+      - name: resellers
+        description: Reseller account attributes.
+
+      - name: dates
+        description: Calendar and fiscal date attributes.
+
+      - name: territories
+        description: Geographic sales territories.

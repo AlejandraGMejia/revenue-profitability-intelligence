@@ -58,3 +58,10 @@ Thumbs.db
 # ==================================================
 # END
 # ==================================================
+
+# dbt development environment and generated artifacts
+.venv-dbt/
+target/
+dbt_packages/
+logs/
+.env
