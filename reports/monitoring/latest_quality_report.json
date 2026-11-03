@@ -1,0 +1,55 @@
+{
+  "project": "Revenue & Profitability Intelligence",
+  "generated_at_utc": "2026-11-03T23:56:00+00:00",
+  "database": "revenue_intelligence",
+  "analytical_schema": "dbt_dev",
+  "summary": {
+    "PASS": 4,
+    "WARN": 3,
+    "FAIL": 0
+  },
+  "checks": [
+    {
+      "name": "Raw-to-mart row reconciliation",
+      "status": "PASS",
+      "details": "Raw sales rows must match analytical fact rows.",
+      "value": "raw=121253, fact=121253"
+    },
+    {
+      "name": "Non-empty analytical fact",
+      "status": "PASS",
+      "details": "The financial fact model must contain records.",
+      "value": "121253"
+    },
+    {
+      "name": "Required analytical keys",
+      "status": "PASS",
+      "details": "Required product, order-date, and territory keys.",
+      "value": "0"
+    },
+    {
+      "name": "Gross profit reconciliation",
+      "status": "PASS",
+      "details": "Each line must reconcile revenue minus product cost to gross profit, within USD 0.02.",
+      "value": "0"
+    },
+    {
+      "name": "Recorded revenue formula differences",
+      "status": "WARN",
+      "details": "Diagnostic differences require business review; they are not automatically data errors.",
+      "value": "3282"
+    },
+    {
+      "name": "Negative gross profit lines",
+      "status": "WARN",
+      "details": "Negative gross profit is a business observation.",
+      "value": "21829"
+    },
+    {
+      "name": "Reseller gross margin observation",
+      "status": "WARN",
+      "details": "Monitoring threshold of 2% is illustrative, not an approved business target.",
+      "value": "0.58%"
+    }
+  ]
+}
