@@ -1,0 +1,11 @@
+[Unit]
+Description=Revenue Intelligence Financial Quality Pipeline
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/Documents/revenue-profitability-intelligence
+ExecStart=%h/Documents/revenue-profitability-intelligence/scripts/run_quality_pipeline.sh
+LoadCredential=postgres_password:%h/.config/revenue-intelligence-dbt/postgres_password
+TimeoutStartSec=300

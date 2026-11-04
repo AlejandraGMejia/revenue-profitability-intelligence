@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily Revenue Intelligence Quality Monitoring
+
+[Timer]
+OnCalendar=*-*-* 09:00:00
+Persistent=true
+AccuracySec=1min
+Unit=revenue-quality.service
+
+[Install]
+WantedBy=timers.target
