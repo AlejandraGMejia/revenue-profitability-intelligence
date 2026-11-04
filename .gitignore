@@ -68,3 +68,6 @@ logs/
 
 # Local monitoring execution history
 reports/monitoring/history/
+
+# Local pipeline execution events
+reports/monitoring/operations/
